@@ -1,11 +1,15 @@
 \pset linestyle unicode
 \pset border 2
 \pset null ¤
+\pset pager off
 \timing
+\encoding unicode
 \set PROMPT1 'user=%n,db=%/@%m:%>=%# '
 \set HISTSIZE 5000
 \set FETCH_COUNT 1000
 \set HISTCONTROL ignoredups
+\set COMP_KEYWORD_CASE upper
+
 
 \echo '\nCurrent Host Server Date Time : '`date` '\n'
 
