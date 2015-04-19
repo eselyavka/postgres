@@ -1,0 +1,60 @@
+<?xml version="1.0"?>
+<!DOCTYPE service_bundle SYSTEM "/usr/share/lib/xml/dtd/service_bundle.dtd.1">
+<service_bundle type='manifest' name='postgresql'>
+<service 
+  name='application/database/postgresql'
+  type='service'
+  version='1'>
+<create_default_instance enabled='false' />
+<dependency
+  name='network'
+  grouping='require_all'
+  restart_on='none'
+  type='service'>
+  <service_fmri value='svc:/milestone/network:default' />
+</dependency>
+<exec_method
+  type='method'
+  name='start'
+  exec='/lib/svc/method/postgresql start'
+  timeout_seconds='300' />
+<exec_method
+  type='method'
+  name='stop'
+  exec='/lib/svc/method/postgresql stop'
+  timeout_seconds='300' />
+<exec_method
+  type='method'
+  name='refresh'
+  exec='/lib/svc/method/postgresql refresh'
+  timeout_seconds='60' />
+<instance name='local_postgres' enabled='false'>
+  <method_context>
+    <method_credential user='postgres' group='postgres' />
+  </method_context>
+  <property_group name='postgresql' type='application'>
+    <propval name='data' type='astring' value='/postgresql/cluster1/' />
+    <propval name='log' type='astring' value='postmaster.log' />
+  </property_group>
+</instance>
+<instance name='iscsi_postgres' enabled='false'>
+  <method_context>
+    <method_credential user='postgres' group='postgres' />
+  </method_context>
+  <property_group name='postgresql' type='application'>
+    <propval name='data' type='astring' value='/postgresql/cluster1/' />
+    <propval name='log' type='astring' value='postmaster.log' />
+  </property_group>
+</instance>
+<stability value='Evolving' />
+<template>
+  <common_name>
+    <loctext xml:lang='C'>PostgreSQL RDBMS</loctext>
+  </common_name>
+  <documentation>
+    <manpage title='postgres' section='1M' />
+    <doc_link name='postgresql.org' uri='http://postgresql.org' />
+  </documentation>
+</template>
+</service>
+</service_bundle>
