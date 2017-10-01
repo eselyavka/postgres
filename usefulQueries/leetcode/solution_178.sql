@@ -1,5 +1,7 @@
 -- leetcode.com #178
+
 /*
+Scores
 +----+-------+
 | Id | Score |
 +----+-------+
