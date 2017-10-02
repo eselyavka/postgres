@@ -1,4 +1,4 @@
--- leetcode.com #617
+-- leetcode.com #612
 
 /*
 point_2d
